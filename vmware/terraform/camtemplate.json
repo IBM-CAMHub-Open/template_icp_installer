@@ -1,0 +1,62 @@
+{
+    "name": "IBM Cloud Private Multi-Node Installation",
+    "description": "This template will deploy a Multi-Node instance of IBM Cloud Private",
+    "version": "1.0",
+    "imageUrl": "",
+    "image": "",
+    "type": "prebuilt",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "VMware vSphere",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "vmware/terraform",
+        "templateFileName": "main.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "HA Node Deployment of IBM Cloud Private",
+      "providerDisplayName": "VMware vSphere",
+      "longDescription": "This template will deploy a Multi-Node instance of IBM Cloud Private",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " VMware vSphere<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Ubuntu 16<br>"},
+{
+    "title": "Topology",
+    "description": "HA Node Virtual Machine (11 VMs) <br> Virtual Machine 1     : IBM Cloud Private Boot Node<br>Virtual Machine 2/3/4 : IBM Cloud Private Master Nodes<br>Virtual Machine 5/6   : IBM Cloud Private Proxy Nodes<br>Virtual Machine 7/8/9 : IBM Cloud Private Worker Nodes<br>Virtual Machine 10    : IBM Cloud Private Vulnerability Node<br>Virtual Machine 11    : IBM Cloud Private NFS Server Node<br>"},
+{
+    "title": "Software Deployed",
+    "description": "IBM Cloud Private<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": " vCPU 8, Memory (GB) 16, Disk (GB) 400<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. The user is responsible for obtaining appropriate software licenses and downloads prior to template deployment.<br>2. IBM Knowledge Center for IBM Cloud Private - <a href=\"https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html\" target=\"_blank\">https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html</a><br>3. IBM Support Portal - <a href=\"https://www.ibm.com/support/home/\" target=\"_blank\">https://www.ibm.com/support/home/</a><br>"
+}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    },
+    "toolchain": {
+      "git": "https://github.com/ibmcam/cam-toolchain"
+    }
+}
+
