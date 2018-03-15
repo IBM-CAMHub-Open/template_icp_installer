@@ -49,6 +49,7 @@
   "template_input_params": [
     {
       "name": "boot_prefix_name",
+      "description": "Management Node Hostname Prefix eg icpboot",
       "default": "ICPboot",
       "type": "string",
       "required": true,
@@ -60,6 +61,7 @@
     },
     {
       "name": "boot_memory",
+      "description": "Management Node Node Memory Allocation (mb)",
       "default": "8192",
       "type": "string",
       "required": true,
@@ -71,6 +73,7 @@
     },
     {
       "name": "boot_vcpu",
+      "description": "Management Node vCPU Allocation",
       "default": "4",
       "type": "string",
       "required": true,
@@ -93,6 +96,7 @@
     },
     {
       "name": "boot_vm_disk1_size",
+      "description": "Management Node Disk Size Disk 1 (GB)",
       "default": "150",
       "type": "string",
       "required": true,
@@ -137,6 +141,7 @@
     },
     {
       "name": "boot_vm_disk2_size",
+      "description": "Management Node Disk Size Disk 2 (GB)",
       "default": "50",
       "type": "string",
       "required": true,
@@ -148,6 +153,7 @@
     },
     {
       "name": "boot_vm_ipv4_address",
+      "description": "Management Node IP Address (list)",
       "type": "list",
       "required": true,
       "secured": false,
@@ -160,6 +166,7 @@
     },
     {
       "name": "boot_vm_ipv4_gateway",
+      "description": "Management Node IP Gateway Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -184,6 +191,7 @@
     },
     {
       "name": "download_user",
+      "description": "Username to access a secure repository location",
       "type": "string",
       "required": false,
       "secured": false,
@@ -194,6 +202,7 @@
     },
     {
       "name": "download_user_password",
+      "description": "Password for the Username to access a secure repository location",
       "type": "string",
       "required": false,
       "secured": true,
@@ -204,6 +213,7 @@
     },
     {
       "name": "docker_binary_url",
+      "description": "Location of the Docker Binaries used by IBM Cloud Private",
       "type": "string",
       "required": true,
       "secured": false,
@@ -216,6 +226,7 @@
     },
     {
       "name": "enable_kibana",
+      "description": "Enable / Disable the installation of Kibana Service in IBM Cloud Private Installation",
       "default": "false",
       "type": "string",
       "required": true,
@@ -238,6 +249,7 @@
     },
     {
       "name": "enable_metering",
+      "description": "Enable / Disable the installation of Metering Service in IBM Cloud Private Installation",
       "default": "true",
       "type": "string",
       "required": true,
@@ -260,6 +272,7 @@
     },
     {
       "name": "worker_enable_glusterFS",
+      "description": "Enable / Disable the installation of Gluster File System in  IBM Cloud Private Installation",
       "default": "true",
       "type": "string",
       "required": true,
@@ -282,6 +295,7 @@
     },
     {
       "name": "icp_cluster_name",
+      "description": "IBM Cloud Private Cluster Name",
       "type": "string",
       "required": true,
       "secured": false,
@@ -293,6 +307,7 @@
     },
     {
       "name": "cluster_vip",
+      "description": "IBM Cloud Private Cluster Virtual IP Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -303,6 +318,7 @@
     },
     {
       "name": "cluster_vip_iface",
+      "description": "IBM Cloud Private Network Interface eg. ens160",
       "type": "string",
       "required": true,
       "secured": false,
@@ -313,6 +329,7 @@
     },
     {
       "name": "proxy_vip",
+      "description": "IBM Cloud Private Proxy Virtual IP Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -323,6 +340,7 @@
     },
     {
       "name": "proxy_vip_iface",
+      "description": "IBM Cloud Private Proxy Network Interface eg. ens160",
       "type": "string",
       "required": true,
       "secured": false,
@@ -333,6 +351,7 @@
     },
     {
       "name": "icp_admin_user",
+      "description": "IBM Cloud Private Admin User Name",
       "default": "admin",
       "type": "string",
       "required": true,
@@ -344,6 +363,7 @@
     },
     {
       "name": "icp_admin_password",
+      "description": "IBM Cloud Private Admin User Password",
       "default": "admin",
       "type": "string",
       "required": true,
@@ -355,6 +375,7 @@
     },
     {
       "name": "icp_binary_url",
+      "description": "Location of the IBM Cloud Private Binaries used by IBM Cloud Private",
       "type": "string",
       "required": true,
       "secured": false,
@@ -367,6 +388,7 @@
     },
     {
       "name": "icp_private_ssh_key",
+      "description": "IBM Cloud Private - Private SSH key for access between boxes (base64 encoded)",
       "default": "",
       "type": "string",
       "required": true,
@@ -378,6 +400,7 @@
     },
     {
       "name": "icp_public_ssh_key",
+      "description": "IBM Cloud Private - Public SSH key for access between boxes",
       "default": "",
       "type": "string",
       "required": true,
@@ -389,6 +412,7 @@
     },
     {
       "name": "icp_version",
+      "description": "IBM Cloud Private Version Number",
       "default": "2.1.0.2",
       "type": "string",
       "required": true,
@@ -400,6 +424,7 @@
     },
     {
       "name": "kub_version",
+      "description": "IBM Cloud Private Kubernetes Version Number",
       "default": "1.9.1",
       "type": "string",
       "required": true,
@@ -411,6 +436,7 @@
     },
     {
       "name": "master_prefix_name",
+      "description": "Master Nodes Hostname Prefix eg icpmaster",
       "default": "ICPMaster",
       "type": "string",
       "required": true,
@@ -422,6 +448,7 @@
     },
     {
       "name": "master_memory",
+      "description": "Master Node Node Memory Allocation (mb)",
       "default": "16384",
       "type": "string",
       "required": true,
@@ -433,6 +460,7 @@
     },
     {
       "name": "master_vcpu",
+      "description": "Master Node vCPU Allocation",
       "default": "8",
       "type": "string",
       "required": true,
@@ -455,6 +483,7 @@
     },
     {
       "name": "master_vm_disk1_size",
+      "description": "Master Node Disk Size Disk 1 (GB)",
       "default": "200",
       "type": "string",
       "required": true,
@@ -499,6 +528,7 @@
     },
     {
       "name": "master_vm_disk2_size",
+      "description": "Master Node Disk Size Disk 2 (GB)",
       "default": "50",
       "type": "string",
       "required": true,
@@ -510,6 +540,7 @@
     },
     {
       "name": "master_vm_ipv4_address",
+      "description": "Master Node IP Address (list)",
       "type": "list",
       "required": true,
       "secured": false,
@@ -522,6 +553,7 @@
     },
     {
       "name": "master_vm_ipv4_gateway",
+      "description": "Master Node IP Gateway Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -560,6 +592,7 @@
     },    
     {
       "name": "proxy_prefix_name",
+      "description": "Proxy Nodes Hostname Prefix eg icpproxy",
       "default": "ICPproxy",
       "type": "string",
       "required": true,
@@ -571,6 +604,7 @@
     },
     {
       "name": "proxy_memory",
+      "description": "Proxy Node Node Memory Allocation (mb)",
       "default": "8192",
       "type": "string",
       "required": true,
@@ -582,6 +616,7 @@
     },
     {
       "name": "proxy_vcpu",
+      "description": "Proxy Node vCPU Allocation",
       "default": "2",
       "type": "string",
       "required": true,
@@ -604,6 +639,7 @@
     },
     {
       "name": "proxy_vm_disk1_size",
+      "description": "proxy Node Disk Size Disk 1 (GB)",
       "default": "100",
       "type": "string",
       "required": true,
@@ -648,6 +684,7 @@
     },
     {
       "name": "proxy_vm_disk2_size",
+      "description": "Proxy Node Disk Size Disk 2 (GB)",
       "default": "50",
       "type": "string",
       "required": true,
@@ -659,6 +696,7 @@
     },
     {
       "name": "proxy_vm_ipv4_address",
+      "description": "Proxy Node IP Address (list)",
       "type": "list",
       "required": true,
       "secured": false,
@@ -671,6 +709,7 @@
     },
     {
       "name": "proxy_vm_ipv4_gateway",
+      "description": "Proxy Node IP Gateway Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -695,6 +734,7 @@
     },
     {
       "name": "worker_prefix_name",
+      "description": "Worker Node Hostname Prefix eg icpworker",
       "default": "ICPworker",
       "type": "string",
       "required": true,
@@ -706,6 +746,7 @@
     },
     {
       "name": "worker_memory",
+      "description": "Worker Node Node Memory Allocation (mb)",
       "default": "8192",
       "type": "string",
       "required": true,
@@ -717,6 +758,7 @@
     },
     {
       "name": "worker_vcpu",
+      "description": "Worker Node vCPU Allocation",
       "default": "4",
       "type": "string",
       "required": true,
@@ -739,6 +781,7 @@
     },
     {
       "name": "worker_vm_disk1_size",
+      "description": "Worker Node Disk Size Disk 1 (GB)",
       "default": "200",
       "type": "string",
       "required": true,
@@ -783,6 +826,7 @@
     },
     {
       "name": "worker_vm_disk2_size",
+      "description": "Worker Node Disk Size Disk 2 (GB)",
       "type": "string",
       "required": true,
       "secured": false,
@@ -793,6 +837,7 @@
     },
     {
       "name": "worker_vm_ipv4_address",
+      "description": "Worker Node IP Address (list)",
       "type": "list",
       "required": true,
       "secured": false,
@@ -805,6 +850,7 @@
     },
     {
       "name": "worker_vm_ipv4_gateway",
+      "description": "Worker Node IP Gateway Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -829,6 +875,7 @@
     },
     {
       "name": "va_prefix_name",
+      "description": "Vulnerability Advisor Node Hostname Prefix eg icpva",
       "default": "ICPva",
       "type": "string",
       "required": true,
@@ -840,6 +887,7 @@
     },
     {
       "name": "va_memory",
+      "description": "Vulnerability Advsior Node Node Memory Allocation (mb)",
       "default": "8192",
       "type": "string",
       "required": true,
@@ -851,6 +899,7 @@
     },
     {
       "name": "va_vcpu",
+      "description": "Vulnerability Advisor Node vCPU Allocation",
       "default": "4",
       "type": "string",
       "required": true,
@@ -873,6 +922,7 @@
     },
     {
       "name": "va_vm_disk1_size",
+      "description": "Management Node Disk Size Disk 1 (GB)",
       "default": "150",
       "type": "string",
       "required": true,
@@ -918,6 +968,7 @@
     },
     {
       "name": "va_vm_disk2_size",
+      "description": "Master Node Disk Size Disk 2 (GB)",
       "default": "50",
       "type": "string",
       "required": true,
@@ -929,6 +980,7 @@
     },
     {
       "name": "va_vm_ipv4_address",
+      "description": "Management Node IP Address (list)",
       "type": "list",
       "required": true,
       "secured": false,
@@ -941,6 +993,7 @@
     },
     {
       "name": "va_vm_ipv4_gateway",
+      "description": "Vulnerability Advisor  Node IP Gateway Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1011,6 +1064,7 @@
     },
     {
       "name": "vm_disk1_datastore",
+      "description": "Virtual Machine Datastore Name - Disk 1",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1021,6 +1075,7 @@
     },
     {
       "name": "vm_disk2_datastore",
+      "description": "Virtual Machine Datastore Name - Disk 2",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1031,6 +1086,7 @@
     },
     {
       "name": "template",
+      "description": "Virtual Machine Template Name",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1053,6 +1109,7 @@
     },
     {
       "name": "vm_os_password",
+      "description": "The user password to use while configuring the IBM Cloud Private Single Node.",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1097,8 +1154,9 @@
     },
     {
       "name": "vm_folder",
+      "description": "vSphere Folder name",
       "type": "string",
-      "required": true,
+      "required": false,
       "secured": false,
       "label": "vSphere Folder Name",
       "hidden": false,
@@ -1108,6 +1166,7 @@
 
     {
       "name": "nfs_server_prefix_name",
+      "description": "NFS Server Node Hostname Prefix eg icpnfs",
       "default": "ICPnfs",
       "type": "string",
       "required": true,
@@ -1119,6 +1178,7 @@
     },
     {
       "name": "nfs_server_memory",
+      "description": "NFS Server Node Node Memory Allocation (mb)",
       "default": "8192",
       "type": "string",
       "required": true,
@@ -1130,6 +1190,7 @@
     },
     {
       "name": "nfs_server_vcpu",
+      "description": "NFS Server Node vCPU Allocation",
       "default": "4",
       "type": "string",
       "required": true,
@@ -1152,6 +1213,7 @@
     },
     {
       "name": "nfs_server_vm_disk1_size",
+      "description": "Management Node Disk Size Disk 1 (GB)",
       "default": "150",
       "type": "string",
       "required": true,
@@ -1163,6 +1225,7 @@
     },
     {
       "name": "nfs_server_vm_disk2_enable",
+      "description": "Management Node Disk Size Disk 2 (GB)",
       "default": "false",
       "type": "string",
       "required": true,
@@ -1196,6 +1259,7 @@
     },
     {
       "name": "nfs_server_vm_disk2_size",
+      "description": "NFS Server Node Disk Size Disk 2 (GB)",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1206,6 +1270,7 @@
     },
     {
       "name": "nfs_server_vm_ipv4_address",
+      "description": "NFS Server Node IP Address (list)",
       "type": "list",
       "required": true,
       "secured": false,
@@ -1218,6 +1283,7 @@
     },
     {
       "name": "nfs_server_vm_ipv4_gateway",
+      "description": "NFS Server Node IP Gateway Address",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1242,6 +1308,7 @@
     },
     {
       "name": "nfs_server_folder",
+      "description": "IBM Cloud Private Master Node NFS Folder Name",
       "default": "/var/nfs",
       "type": "string",
       "required": true,
@@ -1253,6 +1320,7 @@
     },
     {
       "name": "nfs_server_mount_point",
+      "description": "IBM Cloud Private Master Node NFS Mount Name",
       "default": "/mnt/nfs",
       "type": "string",
       "required": true,
@@ -1278,6 +1346,7 @@
     },
     {
       "name": "ibm_cloud_private_admin_user",
+      "description": "IBM Cloud Private Admin Username",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1288,6 +1357,7 @@
     },
     {
       "name": "ibm_cloud_private_admin_password",
+      "description": "IBM Cloud Private Admin Username Password",
       "type": "string",
       "required": true,
       "secured": true,
