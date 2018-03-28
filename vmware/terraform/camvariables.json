@@ -50,7 +50,6 @@
     {
       "name": "boot_prefix_name",
       "description": "Management Node Hostname Prefix eg icpboot",
-      "default": "ICPboot",
       "type": "string",
       "required": true,
       "secured": false,
@@ -437,7 +436,6 @@
     {
       "name": "master_prefix_name",
       "description": "Master Nodes Hostname Prefix eg icpmaster",
-      "default": "ICPMaster",
       "type": "string",
       "required": true,
       "secured": false,
@@ -593,7 +591,6 @@
     {
       "name": "proxy_prefix_name",
       "description": "Proxy Nodes Hostname Prefix eg icpproxy",
-      "default": "ICPproxy",
       "type": "string",
       "required": true,
       "secured": false,
@@ -735,7 +732,6 @@
     {
       "name": "worker_prefix_name",
       "description": "Worker Node Hostname Prefix eg icpworker",
-      "default": "ICPworker",
       "type": "string",
       "required": true,
       "secured": false,
@@ -876,7 +872,6 @@
     {
       "name": "va_prefix_name",
       "description": "Vulnerability Advisor Node Hostname Prefix eg icpva",
-      "default": "ICPva",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1167,7 +1162,6 @@
     {
       "name": "nfs_server_prefix_name",
       "description": "NFS Server Node Hostname Prefix eg icpnfs",
-      "default": "ICPnfs",
       "type": "string",
       "required": true,
       "secured": false,
