@@ -1085,7 +1085,7 @@
       "group_name": "generalvmtemplate"
     },
     {
-      "name": "template",
+      "name": "vm_template",
       "description": "Virtual Machine Template Name",
       "type": "string",
       "required": true,
