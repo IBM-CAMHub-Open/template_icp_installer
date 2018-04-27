@@ -202,7 +202,7 @@
     {
       "name": "download_user_password",
       "description": "Password for the Username to access a secure repository location",
-      "type": "string",
+      "type": "password",
       "required": false,
       "secured": true,
       "label": "Repository User Password (Optional)",
@@ -364,9 +364,9 @@
       "name": "icp_admin_password",
       "description": "IBM Cloud Private Admin User Password",
       "default": "admin",
-      "type": "string",
+      "type": "password",
       "required": true,
-      "secured": false,
+      "secured": true,
       "label": "IBM Cloud Private Admin Password",
       "hidden": false,
       "immutable": false,
@@ -587,7 +587,7 @@
       "hidden": false,
       "immutable": true,
       "group_name": "mastervirtualmachine"
-    },    
+    },
     {
       "name": "proxy_prefix_name",
       "description": "Proxy Nodes Hostname Prefix eg icpproxy",
@@ -1011,7 +1011,7 @@
       "group_name": "vavirtualmachine",
       "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
     },
-    
+
     {
       "name": "vm_adapter_type",
       "description": "Network adapter type for vNIC Configuration",
@@ -1105,9 +1105,9 @@
     {
       "name": "vm_os_password",
       "description": "The user password to use while configuring the IBM Cloud Private Single Node.",
-      "type": "string",
+      "type": "password",
       "required": true,
-      "secured": false,
+      "secured": true,
       "label": "Virtual Machine Template User Password",
       "hidden": false,
       "immutable": false,
