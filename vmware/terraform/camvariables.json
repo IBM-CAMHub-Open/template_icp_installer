@@ -412,7 +412,7 @@
     {
       "name": "icp_version",
       "description": "IBM Cloud Private Version Number",
-      "default": "2.1.0.2",
+      "default": "2.1.0.3",
       "type": "string",
       "required": true,
       "secured": false,
@@ -424,7 +424,7 @@
     {
       "name": "kub_version",
       "description": "IBM Cloud Private Kubernetes Version Number",
-      "default": "1.9.1",
+      "default": "1.10.0",
       "type": "string",
       "required": true,
       "secured": false,
