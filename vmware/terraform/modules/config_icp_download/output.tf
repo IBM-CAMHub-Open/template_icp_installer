@@ -1,1 +1,0 @@
-output "dependsOn" { value = "${null_resource.docker_install_finished.id}" description="Output Parameter when Module Complete"}

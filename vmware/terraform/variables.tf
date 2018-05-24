@@ -1,7 +1,8 @@
 #Boot Node
 variable "boot_prefix_name" {
-  type    = "string"
-  default = "ICPBoot"
+  type = "string"
+
+  default = "icpboot"
 }
 
 variable "boot_vcpu" {
@@ -53,8 +54,7 @@ variable "boot_vm_disk2_keep_on_remove" {
 
 # Master Nodes
 variable "master_prefix_name" {
-  type    = "string"
-  default = "ICPMaster"
+  type = "string"
 }
 
 variable "master_vcpu" {
@@ -111,8 +111,7 @@ variable "master_nfs_folders" {
 
 # Proxy Nodes
 variable "proxy_prefix_name" {
-  type    = "string"
-  default = "ICPProxy"
+  type = "string"
 }
 
 variable "proxy_vcpu" {
@@ -164,8 +163,7 @@ variable "proxy_vm_disk2_keep_on_remove" {
 
 # Workers Nodes
 variable "worker_prefix_name" {
-  type    = "string"
-  default = "ICPWorker"
+  type = "string"
 }
 
 variable "worker_vcpu" {
@@ -174,8 +172,9 @@ variable "worker_vcpu" {
 }
 
 variable "worker_memory" {
-  type    = "string"
-  default = "16384"
+  type = "string"
+
+  default = "32768"
 }
 
 variable "worker_vm_ipv4_address" {
@@ -207,8 +206,9 @@ variable "worker_vm_disk2_enable" {
 }
 
 variable "worker_vm_disk2_size" {
-  type    = "string"
-  default = "50"
+  type = "string"
+
+  default = "85"
 }
 
 variable "worker_vm_disk2_keep_on_remove" {
@@ -221,10 +221,15 @@ variable "worker_enable_glusterFS" {
   default = "true"
 }
 
+variable "gluster_volumetype_none" {
+  type        = "string"
+  default     = "false"
+  description = "Gluster durability"
+}
+
 #VA Node
 variable "va_prefix_name" {
-  type    = "string"
-  default = "ICPVA"
+  type = "string"
 }
 
 variable "va_vcpu" {
@@ -256,7 +261,7 @@ variable "va_vm_disk1_size" {
 
 variable "va_vm_disk1_keep_on_remove" {
   type    = "string"
-  default = "true"
+  default = "false"
 }
 
 variable "va_vm_disk2_enable" {
@@ -270,18 +275,95 @@ variable "va_vm_disk2_size" {
 }
 
 variable "va_vm_disk2_keep_on_remove" {
+  type = "string"
+
+  default = "false"
+}
+
+variable "enable_vm_va" {
+  type = "string"
+
+  default = "false"
+}
+
+#Management Node
+variable "manage_prefix_name" {
+  type = "string"
+}
+
+variable "manage_vcpu" {
+  type = "string"
+
+  default = "8"
+}
+
+variable "manage_memory" {
+  type = "string"
+
+  default = "8192"
+}
+
+variable "manage_vm_ipv4_address" {
+  type = "list"
+}
+
+variable "manage_vm_ipv4_gateway" {
+  type = "string"
+}
+
+variable "manage_vm_ipv4_prefix_length" {
+  type = "string"
+}
+
+variable "manage_vm_disk1_size" {
+  type = "string"
+
+  default = "150"
+}
+
+variable "manage_vm_disk1_keep_on_remove" {
+  type = "string"
+
+  default = "false"
+}
+
+variable "manage_vm_disk2_enable" {
+  type = "string"
+
+  default = "false"
+}
+
+variable "manage_vm_disk2_size" {
+  type = "string"
+
+  default = "50"
+}
+
+variable "manage_vm_disk2_keep_on_remove" {
+  type = "string"
+
+  default = "false"
+}
+
+variable "enable_vm_management" {
+  type = "string"
+
+  default = "true"
+}
+
+variable "enable_nfs" {
   type    = "string"
   default = "false"
 }
 
 #NFS Server
 variable "nfs_server_prefix_name" {
-  type    = "string"
-  default = "ICPNFS"
+  type = "string"
 }
 
 variable "nfs_server_vcpu" {
-  type    = "string"
+  type = "string"
+
   default = "4"
 }
 
@@ -393,12 +475,14 @@ variable "vm_disk2_datastore" {
 
 # SSH KEY Information
 variable "icp_private_ssh_key" {
-  type    = "string"
+  type = "string"
+
   default = ""
 }
 
 variable "icp_public_ssh_key" {
-  type    = "string"
+  type = "string"
+
   default = ""
 }
 
@@ -412,13 +496,54 @@ variable "icp_binary_url" {
 }
 
 variable "icp_version" {
-  type    = "string"
+  type = "string"
+
   default = "2.1.0.3"
 }
 
 variable "kub_version" {
-  type    = "string"
+  type = "string"
+
   default = "1.10.0"
+}
+
+variable "icp_cluster_name" {
+  type = "string"
+}
+
+# ICP Settings
+variable "enable_bluemix_install" {
+  type    = "string"
+  default = "false"
+}
+
+variable "bluemix_token" {
+  type    = "string"
+  default = ""
+}
+
+variable "enable_kibana" {
+  type = "string"
+
+  default = "true"
+}
+
+variable "enable_metering" {
+  type = "string"
+
+  default = "true"
+}
+
+variable "icp_admin_user" {
+  type = "string"
+
+  default = "admin"
+}
+
+variable "icp_admin_password" {
+  type = "string"
+
+  default = "admin"
 }
 
 variable "download_user" {
@@ -427,17 +552,6 @@ variable "download_user" {
 
 variable "download_user_password" {
   type = "string"
-}
-
-# ICP Settings
-variable "enable_kibana" {
-  type    = "string"
-  default = "true"
-}
-
-variable "enable_metering" {
-  type    = "string"
-  default = "true"
 }
 
 variable "cluster_vip" {
@@ -457,18 +571,4 @@ variable "proxy_vip_iface" {
   type = "string"
 
   default = "ens160"
-}
-
-variable "icp_cluster_name" {
-  type = "string"
-}
-
-variable "icp_admin_user" {
-  type    = "string"
-  default = "admin"
-}
-
-variable "icp_admin_password" {
-  type    = "string"
-  default = "admin"
 }

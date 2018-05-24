@@ -54,9 +54,6 @@
       "termsUrl": "",
       "media": [
       ]
-    },
-    "toolchain": {
-      "git": "https://github.com/ibmcam/cam-toolchain"
     }
 }
 
