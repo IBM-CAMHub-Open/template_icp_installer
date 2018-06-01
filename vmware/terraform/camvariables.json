@@ -52,12 +52,15 @@
     ],
   "template_input_params": [
     {
-      "name": "boot_prefix_name",
-      "description": "Boot Node Hostname Prefix eg icpboot",
-      "type": "string",
+      "name": "boot_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "Boot Node Hostname  and IP Address",
+      "type": "map",
       "required": true,
       "secured": false,
-      "label": "Boot Node Hostname Prefix",
+      "label": "Boot Node Hostname ",
       "hidden": false,
       "immutable": false,
       "group_name": "bootvirtualmachine"
@@ -153,19 +156,6 @@
       "hidden": true,
       "immutable": false,
       "group_name": "bootvirtualmachine"
-    },
-    {
-      "name": "boot_vm_ipv4_address",
-      "description": "Boot Node IP Address (list)",
-      "type": "list",
-      "required": true,
-      "secured": false,
-      "label": "Boot Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "bootvirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
     },
     {
       "name": "boot_vm_ipv4_gateway",
@@ -460,12 +450,15 @@
       "group_name": "mgmtvirtualmachine"
     },
     {
-      "name": "manage_prefix_name",
-      "description": "Management Node Hostname Prefix eg icpmanagement",
-      "type": "string",
+      "name": "manage_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "Management Node Hostname and IP Address",
+      "type": "map",
       "required": false,
       "secured": false,
-      "label": "Management Node Hostname Prefix",
+      "label": "Management Node Hostname",
       "hidden": false,
       "immutable": false,
       "group_name": "mgmtvirtualmachine"
@@ -563,19 +556,6 @@
       "group_name": "mgmtvirtualmachine"
     },
     {
-      "name": "manage_vm_ipv4_address",
-      "description": "Management Node IP Address (list)",
-      "type": "list",
-      "required": false,
-      "secured": false,
-      "label": "Management Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
-    },
-    {
       "name": "manage_vm_ipv4_gateway",
       "description": "Management Node IP Gateway Address",
       "type": "string",
@@ -601,12 +581,15 @@
       "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
     },
     {
-      "name": "master_prefix_name",
-      "description": "Master Nodes Hostname Prefix eg icpmaster",
-      "type": "string",
+      "name": "master_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "Master Node Hostname and IP Address",
+      "type": "map",
       "required": true,
       "secured": false,
-      "label": "Master Node Hostname Prefix",
+      "label": "Master Node Hostname",
       "hidden": false,
       "immutable": false,
       "group_name": "mastervirtualmachine"
@@ -704,19 +687,6 @@
       "group_name": "mastervirtualmachine"
     },
     {
-      "name": "master_vm_ipv4_address",
-      "description": "Master Node IP Address (list)",
-      "type": "list",
-      "required": true,
-      "secured": false,
-      "label": "Master Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mastervirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
-    },
-    {
       "name": "master_vm_ipv4_gateway",
       "description": "Master Node IP Gateway Address",
       "type": "string",
@@ -756,12 +726,15 @@
       "group_name": "mastervirtualmachine"
     },
     {
-      "name": "proxy_prefix_name",
-      "description": "Proxy Nodes Hostname Prefix eg icpproxy",
-      "type": "string",
+      "name": "proxy_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "Proxy Node Hostname and IP Address",
+      "type": "map",
       "required": true,
       "secured": false,
-      "label": "proxy Node Hostname Prefix",
+      "label": "Proxy Node Hostname",
       "hidden": false,
       "immutable": false,
       "group_name": "proxyvirtualmachine"
@@ -859,19 +832,6 @@
       "group_name": "proxyvirtualmachine"
     },
     {
-      "name": "proxy_vm_ipv4_address",
-      "description": "Proxy Node IP Address (list)",
-      "type": "list",
-      "required": true,
-      "secured": false,
-      "label": "Proxy Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "proxyvirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
-    },
-    {
       "name": "proxy_vm_ipv4_gateway",
       "description": "Proxy Node IP Gateway Address",
       "type": "string",
@@ -897,12 +857,15 @@
       "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
     },
     {
-      "name": "worker_prefix_name",
-      "description": "Worker Node Hostname Prefix eg icpworker",
-      "type": "string",
+      "name": "worker_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "Worker Node Hostname and IP Address",
+      "type": "map",
       "required": true,
       "secured": false,
-      "label": "Worker Node Hostname Prefix",
+      "label": "Worker Node Hostname",
       "hidden": false,
       "immutable": false,
       "group_name": "workervirtualmachine"
@@ -999,19 +962,6 @@
       "group_name": "workervirtualmachine"
     },
     {
-      "name": "worker_vm_ipv4_address",
-      "description": "Worker Node IP Address (list)",
-      "type": "list",
-      "required": true,
-      "secured": false,
-      "label": "Worker Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "workervirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
-    },
-    {
       "name": "worker_vm_ipv4_gateway",
       "description": "Worker Node IP Gateway Address",
       "type": "string",
@@ -1059,12 +1009,15 @@
       "group_name": "vavirtualmachine"
     },     
     {
-      "name": "va_prefix_name",
-      "description": "Vulnerability Advisor Node Hostname Prefix eg icpva",
-      "type": "string",
+      "name": "va_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "Vulnerability Advisor Node Node Hostname and IP Address",
+      "type": "map",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node Hostname Prefix",
+      "label": "Vulnerability Advisor Node Hostname",
       "hidden": false,
       "immutable": false,
       "group_name": "vavirtualmachine"
@@ -1161,19 +1114,6 @@
       "hidden": true,
       "immutable": false,
       "group_name": "vavirtualmachine"
-    },
-    {
-      "name": "va_vm_ipv4_address",
-      "description": "Management Node IP Address (list)",
-      "type": "list",
-      "required": false,
-      "secured": false,
-      "label": "Vulnerability Advisor Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "vavirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
     },
     {
       "name": "va_vm_ipv4_gateway",
@@ -1371,12 +1311,15 @@
     },
     
     {
-      "name": "nfs_server_prefix_name",
-      "description": "NFS Server Node Hostname Prefix eg icpnfs",
-      "type": "string",
+      "name": "nfs_server_hostname_ip",
+      "default": {
+        "Enter Hostname": "0.0.0.0"
+      },
+      "description": "NFS Server Node Node Hostname and IP Address",
+      "type": "map",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Hostname Prefix",
+      "label": "NFS Server Node Hostname",
       "hidden": false,
       "immutable": false,
       "group_name": "nfs_servervirtualmachine"
@@ -1472,19 +1415,6 @@
       "hidden": false,
       "immutable": false,
       "group_name": "nfs_servervirtualmachine"
-    },
-    {
-      "name": "nfs_server_vm_ipv4_address",
-      "description": "NFS Server Node IP Address (list)",
-      "type": "list",
-      "required": false,
-      "secured": false,
-      "label": "NFS Server Nodes IP Address's",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "nfs_servervirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine"
     },
     {
       "name": "nfs_server_vm_ipv4_gateway",

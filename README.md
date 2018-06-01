@@ -22,6 +22,15 @@ The components of a IBM Cloud Private deployment include:
 
 For more infomation on IBM Cloud Private Nodes, please reference the Knowledge Center: <https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/getting_started/architecture.html>
 
+## IBM Cloud Private Versions
+
+| ICP Version | GitTag Reference|
+|------|:-------------:|
+| 2.1.0.2| 2.0|
+| 2.1.0.3| 2.1|
+
+<https://github.com/IBM-CAMHub-Open/template_icp_installer_single>
+
 ## System Requirements
 
 ### Hardware requirements
@@ -124,8 +133,8 @@ The following tables list the template variables.
 | icp_binary_url |  IBM Cloud Private Download Location (http/https/ftp/file)| string | |
 | icp_private_ssh_key | IBM Cloud Private - Private SSH Key | string | `` |
 | icp_public_ssh_key | IBM Cloud Private - Public SSH Key | string | `` |
-| icp_version | IBM Cloud Private Version | string | `2.1.0.2` |
-| kub_version | Kubernetes Version| string | `1.9.1` |
+| icp_version | IBM Cloud Private Version | string | `2.1.0.3` |
+| kub_version | Kubernetes Version| string | `1.10.0` |
 
 ### Management Node Input Settings
 
