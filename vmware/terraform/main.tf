@@ -36,8 +36,8 @@ resource "null_resource" "create-temp-random-dir" {
 }
 
 module "deployVM_boot" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
-
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+	
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
   vsphere_resource_pool = "${var.vsphere_resource_pool}"
@@ -74,10 +74,20 @@ module "deployVM_boot" {
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
+
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"    
+  
 }
 
 module "deployVM_master" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -116,10 +126,18 @@ module "deployVM_master" {
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
+  
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"    
 }
 
 module "deployVM_manage" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -159,10 +177,18 @@ module "deployVM_manage" {
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
   enable_vm               = "${var.enable_vm_management}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"    
 }
 
 module "deployVM_proxy" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -201,11 +227,19 @@ module "deployVM_proxy" {
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"      
 }
 
 module "deployVM_worker" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
 
+	
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
   vsphere_resource_pool = "${var.vsphere_resource_pool}"
@@ -243,10 +277,18 @@ module "deployVM_worker" {
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"      
 }
 
 module "deployVM_VA_Server" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -286,10 +328,17 @@ module "deployVM_VA_Server" {
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
   enable_vm               = "${var.enable_vm_va}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"      
 }
 
 module "deployVM_NFS_Server" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -328,6 +377,13 @@ module "deployVM_NFS_Server" {
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
   random                  = "${random_string.random-dir.result}"
   enable_vm               = "${var.enable_nfs}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"      
 }
 
 module "icphosts" {
@@ -343,40 +399,65 @@ module "icphosts" {
 }
 
 module "icp_prereqs" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_icp_prereqs"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icp_prereqs"
+
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
 
   random    = "${random_string.random-dir.result}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"      
   dependsOn = "${module.deployVM_VA_Server.dependsOn}+${module.deployVM_NFS_Server.dependsOn}+${module.deployVM_manage.dependsOn}+${module.deployVM_boot.dependsOn}+${module.deployVM_master.dependsOn}+${module.deployVM_proxy.dependsOn}+${module.deployVM_worker.dependsOn}"
 }
 
 module "push_hostfile" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_hostfile"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_hostfile"
+  
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   # vm_ipv4_address_list = "${compact(concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.nfs_server_hostname_ip), values(var.va_hostname_ip)))}"
   vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
   random               = "${random_string.random-dir.result}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"      
   dependsOn            = "${module.icp_prereqs.dependsOn}"
 }
 
 module "NFSServer-Setup" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_nfs_server"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_nfs_server"
+  
   vm_ipv4_address_list = "${values(var.nfs_server_hostname_ip)}"
   vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   nfs_drive            = "/dev/sdb"
   enable_nfs           = "${var.enable_nfs}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"        
   dependsOn            = "${module.push_hostfile.dependsOn}"
 }
 
 module "NFSClient-Setup" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_nfs_client"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_nfs_client"
+
   vm_ipv4_address_list = "${values(var.master_hostname_ip)}"
   vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
@@ -386,11 +467,19 @@ module "NFSClient-Setup" {
   nfs_mount_point      = "${var.nfs_server_mount_point}"
   nfs_link_folders     = "${join(",", var.master_nfs_folders)}"
   enable_nfs           = "${var.enable_nfs}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"        
   dependsOn            = "${module.NFSServer-Setup.dependsOn}"
 }
 
 module "glusterFS" {
-  source                  = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_glusterFS"
+  source                  = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_glusterFS"
+
   vm_ipv4_address_list    = "${values(var.worker_hostname_ip)}"
   vm_ipv4_address_str     = "${join(" ", values(var.worker_hostname_ip))}"
   enable_glusterFS        = "${var.worker_enable_glusterFS}"
@@ -400,11 +489,19 @@ module "glusterFS" {
   vm_os_password          = "${var.vm_os_password}"
   boot_vm_ipv4_address    = "${element(values(var.boot_hostname_ip),0)}"
   gluster_volumetype_none = "${var.gluster_volumetype_none}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"        
   dependsOn               = "${module.NFSClient-Setup.dependsOn}"
 }
 
 module "icp_download_load" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_icp_download"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icp_download"
+
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
@@ -416,11 +513,19 @@ module "icp_download_load" {
   download_user_password = "${var.download_user_password}"
   enable_bluemix_install = "${var.enable_bluemix_install}"
   random                 = "${random_string.random-dir.result}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"        
   dependsOn              = "${module.glusterFS.dependsOn}"
 }
 
 module "icp_config_yaml" {
-  source                 = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_icp_boot_ha"
+  source                 = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icp_boot_ha"
+
   private_key            = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user             = "${var.vm_os_user}"
   vm_os_password         = "${var.vm_os_password}"
@@ -440,6 +545,13 @@ module "icp_config_yaml" {
   enable_bluemix_install = "${var.enable_bluemix_install}"
   bluemix_token          = "${var.bluemix_token}"
   random                 = "${random_string.random-dir.result}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"        
   dependsOn              = "${module.icp_download_load.dependsOn}+${module.icp_prereqs.dependsOn}+${module.push_hostfile.dependsOn}+${module.glusterFS.dependsOn}"
 }
 
