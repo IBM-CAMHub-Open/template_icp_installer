@@ -1,6 +1,6 @@
 {
-    "name": "IBM Cloud Private Multi-Node Installation on OpenStack",
-    "description": "This template will deploy a Multi-Node instance of IBM Cloud Private on OpenStack",
+    "name": "IBM Cloud Private HA Node Installation on OpenStack",
+    "description": "This template will deploy a HA Node instance of IBM Cloud Private on OpenStack",
     "version": "1.0",
     "imageUrl": "",
     "image": "",
@@ -25,7 +25,7 @@
     "metadata": {
       "displayName": "HA Node Deployment of IBM Cloud Private on OpenStack",
       "providerDisplayName": "OpenStack",
-      "longDescription": "This template will deploy a Multi-Node instance of IBM Cloud Private on OpenStack",
+      "longDescription": "This template will deploy a HA Node instance of IBM Cloud Private on OpenStack",
       "bullets": [{
     "title": "Clouds",
     "description": " OpenStack<br>"},

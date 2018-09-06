@@ -1,6 +1,6 @@
 {
-    "name": "IBM Cloud Private Multi-Node Installation",
-    "description": "This template will deploy a Multi-Node instance of IBM Cloud Private",
+    "name": "IBM Cloud Private HA Node Installation",
+    "description": "This template will deploy a HA Node instance of IBM Cloud Private",
     "version": "1.0",
     "imageUrl": "",
     "image": "",
@@ -25,7 +25,7 @@
     "metadata": {
       "displayName": "HA Node Deployment of IBM Cloud Private",
       "providerDisplayName": "VMware vSphere",
-      "longDescription": "This template will deploy a Multi-Node instance of IBM Cloud Private",
+      "longDescription": "This template will deploy a HA Node instance of IBM Cloud Private",
       "bullets": [{
     "title": "Clouds",
     "description": " VMware vSphere<br>"},
