@@ -14,7 +14,7 @@ The components of a IBM Cloud Private deployment include:
 - Management Node (1 Node)
 - Master Nodes (1, 3, or 5 combinations)
 - Proxy Nodes (1 or 2 Combinations)
-- Worker Nodes (3 Nodes)
+- Worker Nodes (Minimum 3 Nodes)
 - Vulnerabilty Node (1 Node)
 
 ![IBM Cloud Private HA Topology](./ICP-Architecture.jpg)

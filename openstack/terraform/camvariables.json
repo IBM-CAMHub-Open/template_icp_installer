@@ -797,7 +797,7 @@
       "default": {
         "Enter Hostname": "0.0.0.0"
       },
-      "description": "Worker Node Hostname and IP Address",
+      "description": "Worker Node Hostname and IP Address (Minimum 3 Worker Nodes)",
       "type": "map",
       "required": true,
       "secured": false,
