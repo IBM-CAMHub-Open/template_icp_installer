@@ -270,7 +270,7 @@ module "deployVM_worker" {
   vm_disk1_size           = "${var.worker_vm_disk1_size}"
   vm_disk1_datastore      = "${var.vm_disk1_datastore}"
   vm_disk1_keep_on_remove = "${var.worker_vm_disk1_keep_on_remove}"
-  vm_disk2_enable         = "${var.worker_vm_disk2_enable}"
+  vm_disk2_enable         = "${var.worker_enable_glusterFS && var.worker_vm_disk2_enable}"
   vm_disk2_size           = "${var.worker_vm_disk2_size}"
   vm_disk2_datastore      = "${var.vm_disk2_datastore}"
   vm_disk2_keep_on_remove = "${var.worker_vm_disk2_keep_on_remove}"

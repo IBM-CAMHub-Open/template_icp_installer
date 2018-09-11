@@ -321,7 +321,7 @@
       "required": true,
       "secured": false,
       "label": "Enable IBM Cloud Private GlusterFS on worker Nodes",
-      "hidden": true,
+      "hidden": false,
       "immutable": false,
       "options": [
         {
