@@ -157,6 +157,7 @@ variable "va_hostname_ip" {
 
 variable "va_vm_flavor_id" {
   type    = "string"
+  default = ""
 }
 
 variable "va_vm_disk1_size" {
@@ -196,6 +197,7 @@ variable "manage_hostname_ip" {
 
 variable "manage_vm_flavor_id" {
   type    = "string"
+  default = ""
 }
 
 variable "manage_vm_disk1_size" {
@@ -240,6 +242,7 @@ variable "nfs_server_hostname_ip" {
 
 variable "nfs_server_flavor_id" {
   type    = "string"
+  default = ""
 }
 
 variable "nfs_server_vm_disk1_size" {
