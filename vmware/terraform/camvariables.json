@@ -1567,6 +1567,7 @@
       "description": "IBM Cloud Private Cluster URL.",
       "hidden": false,
       "label": "IBM Cloud Private Cluster URL",
+      "shortname": "IBM Cloud Private Console",
       "group_name": "content_template_output",
       "secured": false,
       "system": false,

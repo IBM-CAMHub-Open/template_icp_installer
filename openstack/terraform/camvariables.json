@@ -1211,11 +1211,12 @@
   "template_output_params": [
     {
       "name": "ibm_cloud_private_admin_url",
-      "type": "string",
+      "type": "url",
       "description": "IBM Cloud Private Cluster URL.",
       "hidden": false,
-      "label": "OS Template Name",
       "group_name": "content_template_output",
+      "label": "IBM Cloud Private Cluster URL",
+      "shortname": "IBM Cloud Private Console",
       "secured": false,
       "system": false,
       "required": true,
