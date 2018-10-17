@@ -88,7 +88,6 @@ module "deployVM_boot" {
 module "deployVM_master" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
 
-
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
   vsphere_resource_pool = "${var.vsphere_resource_pool}"
@@ -189,7 +188,6 @@ module "deployVM_manage" {
 module "deployVM_proxy" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
 
-
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
   vsphere_resource_pool = "${var.vsphere_resource_pool}"
@@ -239,7 +237,6 @@ module "deployVM_proxy" {
 module "deployVM_worker" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
 
-	
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
   vsphere_resource_pool = "${var.vsphere_resource_pool}"
@@ -288,7 +285,6 @@ module "deployVM_worker" {
 
 module "deployVM_VA_Server" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
-  
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -387,7 +383,8 @@ module "deployVM_NFS_Server" {
 }
 
 module "icphosts" {
-  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.1//config_icphosts"
+  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icphosts"
+
   master_public_ips     = "${join(",", values(var.master_hostname_ip))}"
   management_public_ips = "${join(",", values(var.manage_hostname_ip))}"
   proxy_public_ips      = "${join(",", values(var.proxy_hostname_ip))}"

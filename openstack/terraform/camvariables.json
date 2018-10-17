@@ -178,7 +178,7 @@
     {
       "name": "boot_vm_disk1_size",
       "description": "Boot Node Disk Size Disk 1 (GB)",
-      "default": "150",
+      "default": "200",
       "type": "string",
       "required": true,
       "secured": false,
@@ -238,7 +238,7 @@
       "type": "string",
       "required": false,
       "secured": false,
-      "label": "Repository User Name (Optional)",
+      "label": "Binary Repository User Name (Optional)",
       "hidden": false,
       "immutable": false,
       "group_name": "icpdownload"
@@ -249,7 +249,7 @@
       "type": "password",
       "required": false,
       "secured": true,
-      "label": "Repository User Password (Optional)",
+      "label": "Binary Repository User Password (Optional)",
       "hidden": false,
       "immutable": false,
       "group_name": "icpdownload"
@@ -456,7 +456,20 @@
     {
       "name": "icp_version",
       "description": "IBM Cloud Private Version Number",
-      "default": "2.1.0.3",
+      "options": [{
+          "value": "3.1.0",
+          "label": "3.1.0",
+          "default": "true"
+        },
+        {
+          "value": "2.1.0.3",
+          "label": "2.1.0.3"
+        },
+        {
+          "value": "2.1.0.2",
+          "label": "2.1.0.2"
+        }
+      ],
       "type": "string",
       "required": true,
       "secured": false,
@@ -468,7 +481,7 @@
     {
       "name": "kub_version",
       "description": "IBM Cloud Private Kubernetes Version Number",
-      "default": "1.10.0",
+      "default": "1.11.0",
       "type": "string",
       "required": true,
       "secured": false,
@@ -538,7 +551,7 @@
     {
       "name": "manage_vm_disk1_size",
       "description": "Management Node Disk Size Disk 1 (GB)",
-      "default": "150",
+      "default": "200",
       "type": "string",
       "required": false,
       "secured": false,
@@ -631,7 +644,7 @@
     {
       "name": "master_vm_disk1_size",
       "description": "Master Node Disk Size Disk 1 (GB)",
-      "default": "200",
+      "default": "300",
       "type": "string",
       "required": true,
       "secured": false,
@@ -738,7 +751,7 @@
     {
       "name": "proxy_vm_disk1_size",
       "description": "proxy Node Disk Size Disk 1 (GB)",
-      "default": "100",
+      "default": "200",
       "type": "string",
       "required": true,
       "secured": false,

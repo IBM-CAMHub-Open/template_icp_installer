@@ -20,7 +20,7 @@ The components of a IBM Cloud Private deployment include:
 ![IBM Cloud Private HA Topology](./ICP-Architecture.jpg)
 <p align="center">Image 1: IBM Cloud Private HA Node Topology></p>
 
-For more infomation on IBM Cloud Private Nodes, please reference the Knowledge Center: <https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/getting_started/architecture.html>
+For more infomation on IBM Cloud Private Nodes, please reference the Knowledge Center: <https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/architecture.html>
 
 ## IBM Cloud Private Versions
 
@@ -28,8 +28,9 @@ For more infomation on IBM Cloud Private Nodes, please reference the Knowledge C
 |------|:-------------:|
 | 2.1.0.2| 2.0|
 | 2.1.0.3| 2.1|
+| 3.1.0  | 2.2|
 
-<https://github.com/IBM-CAMHub-Open/template_icp_installer_single>
+<https://github.com/IBM-CAMHub-Open/template_icp_installer>
 
 ## System Requirements
 
@@ -42,11 +43,11 @@ This template will setup the following hardware minimum requirements:
 
 | Node Type | CPU Cores | Memory (mb) | Disk 1 | Disk 2 | Number of hosts |
 |------|:-------------:|:----:|:-----:|:-----:|:-----:|
-| Management | 4 | 8192 | 150 | n/a | 1 |
-| Master  | 8 | 16384 | 200 | n/a | 1 |
-| Proxy | 2 | 8192 | 150 | n/a | 1 |
+| Management | 4 | 16384 | 200 | n/a | 1 |
+| Master  | 12 | 32768 | 300 | n/a | 1 |
+| Proxy | 2 | 8192 | 200 | n/a | 1 |
 | Worker  | 16 | 16384 | 200 | 300 | 1 |
-| Vulnerability Advisor | 4 | 8192 | 150 | n/a | 1 |
+| Vulnerability Advisor | 8 | 8192 | 150 | n/a | 1 |
 | NFS Server | 4 | 8192 | 150 | 50 | 1 |
 
 ***Notes***
@@ -103,7 +104,7 @@ The following tables list the template variables.
 | vm_dns_suffixes | IBM Cloud Private DNS Suffixes | list | `<list>` |
 | vm_domain | IBM Cloud Private Domain Name | string | `ibm.com` |
 | vm_os_user | Virtual Machine  Template User Name | string | `root` |
-| vm_os_password | Virtual Machine Template User Password | string | `s3cretpassw0rd` |
+| vm_os_password | Virtual Machine Template User Password | string |  |
 | vm_template | Virtual Machine Template Name | string |  |
 | vm_disk1_datastore | Virtual Machine Datastore Name - Disk 1 | string |  |
 | vm_disk2_datastore | Virtual Machine Datastore Name - Disk 2 | string |  |
@@ -133,17 +134,17 @@ The following tables list the template variables.
 | icp_binary_url |  IBM Cloud Private Download Location (http/https/ftp/file)| string | |
 | icp_private_ssh_key | IBM Cloud Private - Private SSH Key | string | `` |
 | icp_public_ssh_key | IBM Cloud Private - Public SSH Key | string | `` |
-| icp_version | IBM Cloud Private Version | string | `2.1.0.3` |
-| kub_version | Kubernetes Version| string | `1.10.0` |
+| icp_version | IBM Cloud Private Version | string | `3.1.0` |
+| kub_version | Kubernetes Version| string | `1.11.0` |
 
 ### Management Node Input Settings
 
 | Name | Description | Type | Default |
 |------|-------------|:----:|:-----:|
 | boot_prefix_name | Management Node Hostname Prefix | string | `ICPBoot` |
-| boot_memory |  Management Node Memory Allocation (mb) | string | `8192` |
+| boot_memory |  Management Node Memory Allocation (mb) | string | `16384` |
 | boot_vcpu | Management Node vCPU Allocation | string | `4` |
-| boot_vm_disk1_size | Management Node Disk Size (GB) | string | `150` |
+| boot_vm_disk1_size | Management Node Disk Size (GB) | string | `200` |
 | boot_vm_ipv4_address | Management Nodes IP Address | list | `<list>` |
 | boot_vm_ipv4_gateway | Management Node IP Gateway | string |  |
 | boot_vm_ipv4_prefix_length | Management Node IP Netmask (CIDR) | string | `24` |
@@ -153,9 +154,9 @@ The following tables list the template variables.
 | Name | Description | Type | Default |
 |------|-------------|:----:|:-----:|
 | master_prefix_name | Master Node Hostname Prefix | string | `ICPMaster` |
-| master_memory | Master Node Memory Allocation (mb) | string | `16384` |
-| master_vcpu | Master Node vCPU Allocation | string | `8` |
-| master_vm_disk1_size | Master Node Disk Size (GB)  | string | `200` |
+| master_memory | Master Node Memory Allocation (mb) | string | `32768` |
+| master_vcpu | Master Node vCPU Allocation | string | `12` |
+| master_vm_disk1_size | Master Node Disk Size (GB)  | string | `300` |
 | master_vm_ipv4_address | Master Nodes IP Address's | list | `<list>` |
 | master_vm_ipv4_gateway | Master Node IP Gateway | string |  |
 | master_vm_ipv4_prefix_length | Master Node IP Netmask (CIDR) | string | `24` |
@@ -168,7 +169,7 @@ The following tables list the template variables.
 | proxy_prefix_name | Proxy Node Hostname Prefix | string | `ICPProxy` |
 | proxy_memory | Proxy Node Memory Allocation (mb) | string | `8192` |
 | proxy_vcpu | Proxy Node vCPU Allocation | string | `2` |
-| proxy_vm_disk1_size | Proxy Node Disk Size (GB) | string | `100` |
+| proxy_vm_disk1_size | Proxy Node Disk Size (GB) | string | `200` |
 | proxy_vm_ipv4_address | Proxy Nodes IP Address's | list | `<list>` |
 | proxy_vm_ipv4_gateway | Proxy Node IP Gateway | string |  |
 | proxy_vm_ipv4_prefix_length | Proxy Node IP Netmask (CIDR)  | string | `24` |
@@ -193,7 +194,7 @@ The following tables list the template variables.
 |------|-------------|:----:|:-----:|
 | va_prefix_name | Vulnerability Advisor Node Hostname Prefix | string | `ICPVA` |
 | va_memory | Vulnerability Advisor Node Memory Allocation (mb) | string | `8192` |
-| va_vcpu | Vulnerability Advisor Node vCPU Allocation | string | `4` |
+| va_vcpu | Vulnerability Advisor Node vCPU Allocation | string | `8` |
 | va_vm_disk1_size | Vulnerability Advisor Node Disk Size (GB) | string | `150` |
 | va_vm_ipv4_address | Vulnerability Advisor Nodes IP Address | list | `<list>` |
 | va_vm_ipv4_gateway | Vulnerability Advisor Node IP Gateway | string |  |
