@@ -441,6 +441,7 @@ module "NFSServer-Setup" {
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   nfs_drive            = "/dev/sdb"
+  nfs_link_folders     = "${join(",", var.master_nfs_folders)}"
   enable_nfs           = "${var.enable_nfs}"
   #######
   bastion_host        = "${var.bastion_host}"
@@ -461,7 +462,6 @@ module "NFSClient-Setup" {
   vm_os_password       = "${var.vm_os_password}"
   nfs_server           = "${values(var.nfs_server_hostname_ip)}"
   nfs_folder           = "${var.nfs_server_folder}"
-  nfs_mount_point      = "${var.nfs_server_mount_point}"
   nfs_link_folders     = "${join(",", var.master_nfs_folders)}"
   enable_nfs           = "${var.enable_nfs}"
   #######

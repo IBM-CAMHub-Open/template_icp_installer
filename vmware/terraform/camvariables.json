@@ -1548,18 +1548,6 @@
       "hidden": false,
       "immutable": false,
       "group_name": "nfs_servervirtualmachine"
-    },
-    {
-      "name": "nfs_server_mount_point",
-      "description": "IBM Cloud Private Master Node NFS Mount Name",
-      "default": "/mnt/nfs",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "NFS Server Node Mount Point",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
     }
   ],
   "template_output_params": [

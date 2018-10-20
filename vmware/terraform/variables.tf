@@ -384,11 +384,6 @@ variable "nfs_server_folder" {
   default = "/var/nfs"
 }
 
-variable "nfs_server_mount_point" {
-  type    = "string"
-  default = "/mnt/nfs"
-}
-
 # VM Generic Items
 variable "vm_domain" {
   type = "string"
