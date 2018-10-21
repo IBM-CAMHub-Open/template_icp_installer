@@ -46,6 +46,11 @@ variable "boot_vm_disk2_keep_on_remove" {
   default = "false"
 }
 
+variable "vm_clone_timeout" {
+  description = "The timeout, in minutes, to wait for the virtual machine clone to complete."
+  default = "30"
+}
+
 # Master Nodes
 variable "master_hostname_ip" {
   type = "map"

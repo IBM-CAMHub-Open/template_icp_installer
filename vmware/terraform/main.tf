@@ -73,6 +73,7 @@ module "deployVM_boot" {
   vm_disk2_keep_on_remove = "${var.boot_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
 
   #######
@@ -124,6 +125,7 @@ module "deployVM_master" {
   vm_disk2_keep_on_remove = "${var.master_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
   
   #######
@@ -174,6 +176,7 @@ module "deployVM_manage" {
   vm_disk2_keep_on_remove = "${var.manage_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
   enable_vm               = "${var.enable_vm_management}"
   #######
@@ -224,6 +227,7 @@ module "deployVM_proxy" {
   vm_disk2_keep_on_remove = "${var.proxy_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
   #######
   bastion_host        = "${var.bastion_host}"
@@ -273,6 +277,7 @@ module "deployVM_worker" {
   vm_disk2_keep_on_remove = "${var.worker_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
   #######
   bastion_host        = "${var.bastion_host}"
@@ -322,6 +327,7 @@ module "deployVM_VA_Server" {
   vm_disk2_keep_on_remove = "${var.va_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
   enable_vm               = "${var.enable_vm_va}"
   #######
@@ -371,6 +377,7 @@ module "deployVM_NFS_Server" {
   vm_disk2_keep_on_remove = "${var.nfs_server_vm_disk2_keep_on_remove}"
   vm_dns_servers          = "${var.vm_dns_servers}"
   vm_dns_suffixes         = "${var.vm_dns_suffixes}"
+  vm_clone_timeout        = "${var.vm_clone_timeout}"
   random                  = "${random_string.random-dir.result}"
   enable_vm               = "${var.enable_nfs}"
   #######

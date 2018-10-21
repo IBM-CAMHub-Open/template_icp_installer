@@ -1341,6 +1341,18 @@
       "group_name": "generalvmtemplate"
     },
     {
+      "name": "vm_clone_timeout",
+      "description": "The timeout, in minutes, to wait for the virtual machine clone to complete.",
+      "default": "30",
+      "type": "string",
+      "required": false,
+      "secured": false,
+      "label": "Virtual Machine Clone Timeout",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "generalvmtemplate"
+    },
+    {
       "name": "vsphere_datacenter",
       "description": "The name of a Datacenter in which to launch the IBM Cloud Private.",
       "type": "string",
