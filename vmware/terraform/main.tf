@@ -540,6 +540,8 @@ module "icp_config_yaml" {
   enable_metering        = "${lower(var.enable_metering)}"
   cluster_vip            = "${var.cluster_vip}"
   cluster_vip_iface      = "${var.cluster_vip_iface}"
+  cluster_lb_address     = "${var.cluster_lb_address}"
+  proxy_lb_address       = "${var.proxy_lb_address}"
   proxy_vip              = "${var.proxy_vip}"
   proxy_vip_iface        = "${var.proxy_vip_iface}"
   icp_version            = "${var.icp_version}"

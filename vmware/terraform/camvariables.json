@@ -430,6 +430,30 @@
       "group_name": "icpmultinode"
     },
     {
+      "name": "cluster_lb_address",
+      "default": "none",
+      "description": "IP Address of the Cluster Load Balancer",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "IP Address of the Cluster Load Balancer",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "icpmultinode"
+    },
+    {
+      "name": "proxy_lb_address",
+      "default": "none",
+      "description": "IP Address of the Proxy Load Balancer",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "IP Address of the Proxy Load Balancer",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "icpmultinode"
+    },
+    {
       "name": "icp_admin_user",
       "description": "IBM Cloud Private Admin User Name",
       "default": "admin",

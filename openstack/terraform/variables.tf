@@ -275,11 +275,6 @@ variable "nfs_server_folder" {
   default = "/var/nfs"
 }
 
-variable "nfs_server_mount_point" {
-  type    = "string"
-  default = "/mnt/nfs"
-}
-
 # VM Generic Items
 variable "vm_domain" {
   type = "string"
@@ -394,4 +389,16 @@ variable "proxy_vip" {
 variable "proxy_vip_iface" {
   type = "string"
   default = "ens160"
+}
+
+variable "cluster_lb_address" {
+  type = "string"
+  default = "none"
+  description = "IP Address of the Cluster Load Balancer"
+}
+
+variable "proxy_lb_address" {
+  type = "string"
+  default = "none"
+  description = "IP Address of the Proxy Load Balancer"
 }

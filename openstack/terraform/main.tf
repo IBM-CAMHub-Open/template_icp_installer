@@ -285,6 +285,7 @@ module "icphosts" {
   va_public_ips         = "${join(",", values(var.va_hostname_ip))}"
   enable_vm_management  = "${var.enable_vm_management}"
   enable_vm_va          = "${var.enable_vm_va}"
+  enable_glusterFS      = "${var.worker_enable_glusterFS}"
   random                = "${random_string.random-dir.result}"
 }
 
@@ -333,6 +334,7 @@ module "NFSServer-Setup" {
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   nfs_drive            = "/dev/sdb"
+  nfs_link_folders     = "${join(",", var.master_nfs_folders)}"
   enable_nfs           = "${var.enable_nfs}"
   #######
   bastion_host        = "${var.bastion_host}"
@@ -352,7 +354,6 @@ module "NFSClient-Setup" {
   vm_os_password       = "${var.vm_os_password}"
   nfs_server           = "${values(var.nfs_server_hostname_ip)}"
   nfs_folder           = "${var.nfs_server_folder}"
-  nfs_mount_point      = "${var.nfs_server_mount_point}"
   nfs_link_folders     = "${join(",", var.master_nfs_folders)}"
   enable_nfs           = "${var.enable_nfs}"
   #######
@@ -376,6 +377,7 @@ module "glusterFS" {
   vm_os_password          = "${var.vm_os_password}"
   boot_vm_ipv4_address    = "${element(values(var.boot_hostname_ip),0)}"
   gluster_volumetype_none = "${var.gluster_volumetype_none}"
+  icp_version             = "${var.icp_version}"
   #######
   bastion_host        = "${var.bastion_host}"
   bastion_user        = "${var.bastion_user}"
@@ -419,6 +421,8 @@ module "icp_config_yaml" {
   enable_metering        = "${lower(var.enable_metering)}"
   cluster_vip            = "${var.cluster_vip}"
   cluster_vip_iface      = "${var.cluster_vip_iface}"
+  cluster_lb_address     = "${var.cluster_lb_address}"
+  proxy_lb_address       = "${var.proxy_lb_address}"
   proxy_vip              = "${var.proxy_vip}"
   proxy_vip_iface        = "${var.proxy_vip_iface}"
   icp_version            = "${var.icp_version}"
@@ -428,6 +432,7 @@ module "icp_config_yaml" {
   icp_admin_user         = "${var.icp_admin_user}"
   icp_admin_password     = "${var.icp_admin_password}"
   enable_bluemix_install = "${var.enable_bluemix_install}"
+  enable_glusterFS       = "${var.worker_enable_glusterFS}"
   bluemix_token          = "${var.bluemix_token}"
   random                 = "${random_string.random-dir.result}"
   #######
