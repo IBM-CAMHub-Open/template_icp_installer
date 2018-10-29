@@ -351,6 +351,29 @@
       "group_name": "icpmultinode"
     },
     {
+      "name": "enable_monitoring",
+      "description": "Enable / Disable the installation of Monitoring Service in IBM Cloud Private Installation",
+      "default": "true",
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Enable IBM Cloud Private Monitoring",
+			"hidden": false,
+			"immutable": false,
+			"options": [{
+					"value": "true",
+					"label": "true",
+					"default": true
+				},
+				{
+					"value": "false",
+					"label": "false"
+
+				}
+			],
+			"group_name": "icpmultinode"
+    },    
+    {
       "name": "worker_enable_glusterFS",
       "description": "Enable / Disable the installation of Gluster File System in  IBM Cloud Private Installation",
       "default": "true",

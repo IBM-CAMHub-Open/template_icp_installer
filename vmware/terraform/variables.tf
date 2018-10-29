@@ -500,7 +500,11 @@ variable "enable_kibana" {
 
 variable "enable_metering" {
   type = "string"
+  default = "true"
+}
 
+variable "enable_monitoring" {
+  type    = "string"
   default = "true"
 }
 
