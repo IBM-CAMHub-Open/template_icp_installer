@@ -420,6 +420,7 @@ module "icp_config_yaml" {
   enable_kibana          = "${lower(var.enable_kibana)}"
   enable_metering        = "${lower(var.enable_metering)}"
   enable_monitoring      = "${lower(var.enable_monitoring)}"  
+  enable_va              = "${lower(var.enable_vm_va)}"
   cluster_vip            = "${var.cluster_vip}"
   cluster_vip_iface      = "${var.cluster_vip_iface}"
   cluster_lb_address     = "${var.cluster_lb_address}"
