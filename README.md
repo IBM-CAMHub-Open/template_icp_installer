@@ -208,7 +208,6 @@ The following tables list the template variables.
 | nfs_server_memory | NFS Server Node Memory Allocation (mb) | string | `8192` |
 | nfs_server_vcpu | NFS Server Node vCPU Allocation | string | `4` |
 | nfs_server_vm_disk1_size | NFS Server Node Disk Size (GB)  | string | `150` |
-| nfs_server_vm_disk2_enable | NFS Server Node Enable Disk 2 (NFS Mount) | string | `true` |
 | nfs_server_vm_disk2_size | NFS Server Node Disk Size (GB) - Disk 2 (NFS Size) | string | `100` |
 | nfs_server_vm_ipv4_address | NFS Server Nodes IP Address | list | `<list>` |
 | nfs_server_vm_ipv4_gateway | NFS Server Node IP Gateway | string |  |

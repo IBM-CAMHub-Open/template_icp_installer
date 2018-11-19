@@ -1527,29 +1527,6 @@
       "group_name": "nfs_servervirtualmachine"
     },
     {
-      "name": "nfs_server_vm_disk2_enable",
-      "description": "Management Node Disk Size Disk 2 (GB)",
-      "default": "false",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "NFS Server Node Datastore Name - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "options": [
-        {
-          "nfs_serverlue": "true",
-          "label": "true",
-          "default": true
-        },
-        {
-          "nfs_serverlue": "false",
-          "label": "false"
-        }
-      ],
-      "group_name": "nfs_servervirtualmachine"
-    },
-    {
       "name": "nfs_server_vm_disk2_keep_on_remove",
       "default": "false",
       "type": "string",
@@ -1563,6 +1540,7 @@
     {
       "name": "nfs_server_vm_disk2_size",
       "description": "NFS Server Node Disk Size Disk 2 (GB)",
+      "default": "100",
       "type": "string",
       "required": false,
       "secured": false,

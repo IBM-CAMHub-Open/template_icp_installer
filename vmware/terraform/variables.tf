@@ -369,11 +369,6 @@ variable "nfs_server_vm_disk1_keep_on_remove" {
   default = "false"
 }
 
-variable "nfs_server_vm_disk2_enable" {
-  type    = "string"
-  default = "true"
-}
-
 variable "nfs_server_vm_disk2_size" {
   type    = "string"
   default = "100"

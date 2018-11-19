@@ -371,7 +371,7 @@ module "deployVM_NFS_Server" {
   vm_disk1_size           = "${var.nfs_server_vm_disk1_size}"
   vm_disk1_datastore      = "${var.vm_disk1_datastore}"
   vm_disk1_keep_on_remove = "${var.nfs_server_vm_disk1_keep_on_remove}"
-  vm_disk2_enable         = "${var.nfs_server_vm_disk2_enable}"
+  vm_disk2_enable         = "${var.nfs_server_vm_disk2_size > 0 ? "true" : "false"}"
   vm_disk2_size           = "${var.nfs_server_vm_disk2_size}"
   vm_disk2_datastore      = "${var.vm_disk2_datastore}"
   vm_disk2_keep_on_remove = "${var.nfs_server_vm_disk2_keep_on_remove}"
@@ -401,6 +401,7 @@ module "icphosts" {
   enable_vm_va          = "${var.enable_vm_va}"
   enable_glusterFS      = "${var.worker_enable_glusterFS}"
   random                = "${random_string.random-dir.result}"
+  icp_version           = "${var.icp_version}"
 }
 
 module "icp_prereqs" {
