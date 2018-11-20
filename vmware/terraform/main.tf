@@ -36,7 +36,7 @@ resource "null_resource" "create-temp-random-dir" {
 }
 
 module "deployVM_boot" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 	
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -87,7 +87,7 @@ module "deployVM_boot" {
 }
 
 module "deployVM_master" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -138,7 +138,7 @@ module "deployVM_master" {
 }
 
 module "deployVM_manage" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -189,7 +189,7 @@ module "deployVM_manage" {
 }
 
 module "deployVM_proxy" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -239,7 +239,7 @@ module "deployVM_proxy" {
 }
 
 module "deployVM_worker" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -289,7 +289,7 @@ module "deployVM_worker" {
 }
 
 module "deployVM_VA_Server" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -340,7 +340,7 @@ module "deployVM_VA_Server" {
 }
 
 module "deployVM_NFS_Server" {
-  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//vmware_provision"
+  source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
   #######
   vsphere_datacenter    = "${var.vsphere_datacenter}"
@@ -390,7 +390,7 @@ module "deployVM_NFS_Server" {
 }
 
 module "icphosts" {
-  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icphosts"
+  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icphosts"
 
   master_public_ips     = "${join(",", values(var.master_hostname_ip))}"
   management_public_ips = "${join(",", values(var.manage_hostname_ip))}"
@@ -405,7 +405,7 @@ module "icphosts" {
 }
 
 module "icp_prereqs" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icp_prereqs"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icp_prereqs"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
@@ -424,7 +424,7 @@ module "icp_prereqs" {
 }
 
 module "push_hostfile" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_hostfile"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_hostfile"
   
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
@@ -443,7 +443,7 @@ module "push_hostfile" {
 }
 
 module "NFSServer-Setup" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_nfs_server"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_nfs_server"
   
   vm_ipv4_address_list = "${values(var.nfs_server_hostname_ip)}"
   vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
@@ -463,7 +463,7 @@ module "NFSServer-Setup" {
 }
 
 module "NFSClient-Setup" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_nfs_client"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_nfs_client"
 
   vm_ipv4_address_list = "${values(var.master_hostname_ip)}"
   vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
@@ -484,7 +484,7 @@ module "NFSClient-Setup" {
 }
 
 module "glusterFS" {
-  source                  = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_glusterFS"
+  source                  = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_glusterFS"
 
   vm_ipv4_address_list    = "${values(var.worker_hostname_ip)}"
   vm_ipv4_address_str     = "${join(" ", values(var.worker_hostname_ip))}"
@@ -507,7 +507,7 @@ module "glusterFS" {
 }
 
 module "icp_download_load" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icp_download"
+  source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icp_download"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user           = "${var.vm_os_user}"
@@ -531,7 +531,7 @@ module "icp_download_load" {
 }
 
 module "icp_config_yaml" {
-  source                 = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.2//config_icp_boot_ha"
+  source                 = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icp_boot_ha"
 
   private_key            = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
   vm_os_user             = "${var.vm_os_user}"
