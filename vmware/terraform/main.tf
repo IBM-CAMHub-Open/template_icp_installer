@@ -56,7 +56,7 @@ module "deployVM_boot" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.boot_vm_ipv4_gateway}"
@@ -86,6 +86,24 @@ module "deployVM_boot" {
   
 }
 
+module "add_ilmt_file_boot" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${concat(values(var.boot_hostname_ip))}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######    
+  dependsOn            = "${module.deployVM_boot.dependsOn}"
+}
+
 module "deployVM_master" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
@@ -108,7 +126,7 @@ module "deployVM_master" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.master_vm_ipv4_gateway}"
@@ -137,6 +155,24 @@ module "deployVM_master" {
   bastion_password    = "${var.bastion_password}"    
 }
 
+module "add_ilmt_file_master" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${concat(values(var.master_hostname_ip))}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######    
+  dependsOn            = "${module.deployVM_master.dependsOn}"
+}
+
 module "deployVM_manage" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
@@ -159,7 +195,7 @@ module "deployVM_manage" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.manage_vm_ipv4_gateway}"
@@ -210,7 +246,7 @@ module "deployVM_proxy" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.proxy_vm_ipv4_gateway}"
@@ -238,6 +274,24 @@ module "deployVM_proxy" {
   bastion_password    = "${var.bastion_password}"      
 }
 
+module "add_ilmt_file_proxy" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${concat(values(var.proxy_hostname_ip))}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######    
+  dependsOn            = "${module.deployVM_proxy.dependsOn}"
+}
+
 module "deployVM_worker" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
@@ -260,7 +314,7 @@ module "deployVM_worker" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.worker_vm_ipv4_gateway}"
@@ -288,6 +342,24 @@ module "deployVM_worker" {
   bastion_password    = "${var.bastion_password}"      
 }
 
+module "add_ilmt_file_worker" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${concat(values(var.worker_hostname_ip))}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######    
+  dependsOn            = "${module.deployVM_worker.dependsOn}"
+}
+
 module "deployVM_VA_Server" {
   source = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//vmware_provision"
 
@@ -310,7 +382,7 @@ module "deployVM_VA_Server" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.va_vm_ipv4_gateway}"
@@ -360,7 +432,7 @@ module "deployVM_NFS_Server" {
   vm_os_user                 = "${var.vm_os_user}"
   vm_domain                  = "${var.vm_domain}"
   vm_folder                  = "${var.vm_folder}"
-  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${var.icp_private_ssh_key}"}"
+  vm_private_ssh_key         = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}"     : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_public_ssh_key          = "${length(var.icp_public_ssh_key)  == 0 ? "${tls_private_key.generate.public_key_openssh}"  : "${var.icp_public_ssh_key}"}"
   vm_network_interface_label = "${var.vm_network_interface_label}"
   vm_ipv4_gateway            = "${var.nfs_server_vm_ipv4_gateway}"
@@ -407,7 +479,7 @@ module "icphosts" {
 module "icp_prereqs" {
   source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icp_prereqs"
 
-  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   vm_ipv4_address_list = "${compact(split(",", replace(join(",",concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.manage_hostname_ip), values(var.va_hostname_ip))),"/0.0.0.0/", "" )))}"
@@ -426,7 +498,7 @@ module "icp_prereqs" {
 module "push_hostfile" {
   source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_hostfile"
   
-  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   # vm_ipv4_address_list = "${compact(concat(values(var.boot_hostname_ip), values(var.master_hostname_ip), values(var.proxy_hostname_ip), values(var.manage_hostname_ip), values(var.worker_hostname_ip), values(var.nfs_server_hostname_ip), values(var.va_hostname_ip)))}"
@@ -442,11 +514,71 @@ module "push_hostfile" {
   dependsOn            = "${module.icp_prereqs.dependsOn}"
 }
 
+module "add_ilmt_file_VA_Server" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  enable_vm               = "${var.enable_vm_va}"
+
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${values(var.va_hostname_ip)}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######      
+  dependsOn            = "${module.deployVM_VA_Server.dependsOn}"
+}
+
+module "add_ilmt_file_NFS_Server" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  enable_vm           = "${var.enable_nfs}"
+  
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${values(var.nfs_server_hostname_ip)}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######    
+  dependsOn            = "${module.push_hostfile.dependsOn}"
+}
+
+module "add_ilmt_file_manage" {
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform-modules.git?ref=1.0//config_add_ilmt_file"
+
+  enable_vm               = "${var.enable_vm_management}"
+
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
+  vm_os_password       = "${var.vm_os_password}"
+  vm_os_user           = "${var.vm_os_user}"
+  vm_ipv4_address_list = "${values(var.manage_hostname_ip)}"
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######    
+  dependsOn            = "${module.push_hostfile.dependsOn}"
+}
+
 module "NFSServer-Setup" {
   source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_nfs_server"
   
   vm_ipv4_address_list = "${values(var.nfs_server_hostname_ip)}"
-  vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   nfs_drive            = "/dev/sdb"
@@ -466,7 +598,7 @@ module "NFSClient-Setup" {
   source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_nfs_client"
 
   vm_ipv4_address_list = "${values(var.master_hostname_ip)}"
-  vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  vm_os_private_key    = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   nfs_server           = "${values(var.nfs_server_hostname_ip)}"
@@ -490,7 +622,7 @@ module "glusterFS" {
   vm_ipv4_address_str     = "${join(" ", values(var.worker_hostname_ip))}"
   enable_glusterFS        = "${var.worker_enable_glusterFS}"
   random                  = "${random_string.random-dir.result}"
-  private_key             = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  private_key             = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user              = "${var.vm_os_user}"
   vm_os_password          = "${var.vm_os_password}"
   boot_vm_ipv4_address    = "${element(values(var.boot_hostname_ip),0)}"
@@ -509,7 +641,7 @@ module "glusterFS" {
 module "icp_download_load" {
   source               = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icp_download"
 
-  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user           = "${var.vm_os_user}"
   vm_os_password       = "${var.vm_os_password}"
   vm_ipv4_address_list   = "${values(var.boot_hostname_ip)}"
@@ -533,7 +665,7 @@ module "icp_download_load" {
 module "icp_config_yaml" {
   source                 = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_icp_boot_ha"
 
-  private_key            = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${var.icp_private_ssh_key}"}"
+  private_key            = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_user             = "${var.vm_os_user}"
   vm_os_password         = "${var.vm_os_password}"
   vm_ipv4_address_list   = "${values(var.boot_hostname_ip)}"
