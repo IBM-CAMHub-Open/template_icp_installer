@@ -46,8 +46,6 @@ module "deployVM_boot" {
   count = "${length(keys(var.boot_hostname_ip))}"
 
   #######
-  // vm_folder = "${module.createFolder.folderPath}"
-
   vm_vcpu                    = "${var.boot_vcpu}"                                                                                                           // vm_number_of_vcpu
   vm_name                    = "${keys(var.boot_hostname_ip)}"
   vm_memory                  = "${var.boot_memory}"
