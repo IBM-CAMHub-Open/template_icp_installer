@@ -1253,6 +1253,18 @@
       "immutable": false
     },
     {
+      "name": "ibm_cloud_private_master_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Master Node IP.",
+      "hidden": false,
+      "label": "Master IP",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    }, 
+    {
       "name": "ibm_cloud_private_admin_user",
       "description": "IBM Cloud Private Admin Username",
       "type": "string",

@@ -1603,7 +1603,20 @@
       "system": false,
       "required": true,
       "immutable": false
-    },    {
+    },    
+    {
+      "name": "ibm_cloud_private_boot_ip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Boot Node IP.",
+      "hidden": false,
+      "label": "Boot IP",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    }, 
+    {
       "name": "ibm_cloud_private_admin_url",
       "type": "url",
       "description": "IBM Cloud Private Cluster URL.",
