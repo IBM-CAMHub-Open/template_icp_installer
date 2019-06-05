@@ -1079,12 +1079,12 @@
       "immutable": false,
       "options": [
         {
-          "workerlue": "true",
+          "value": "true",
           "label": "true",
           "default": true
         },
         {
-          "workerlue": "false",
+          "value": "false",
           "label": "false"
         }
       ],
@@ -1127,7 +1127,7 @@
     },
     {
       "name": "worker_vm_ipv4_prefix_length",
-      "description": "Integer workerlue between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
+      "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
       "type": "string",
       "required": true,
       "secured": false,

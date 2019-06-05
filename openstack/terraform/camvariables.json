@@ -915,12 +915,12 @@
       "immutable": false,
       "options": [
         {
-          "workerlue": "true",
+          "value": "true",
           "label": "true",
           "default": true
         },
         {
-          "workerlue": "false",
+          "value": "false",
           "label": "false"
         }
       ],
