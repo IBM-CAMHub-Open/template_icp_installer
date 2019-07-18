@@ -1592,7 +1592,7 @@
       "secured": false,
       "label": "NFS Server Node Server Folder",
       "hidden": false,
-      "immutable": false,
+      "immutable": true,
       "group_name": "nfs_servervirtualmachine"
     }
   ],
@@ -1603,6 +1603,18 @@
       "description": "IBM Cloud Private Cluster Master Node IP.",
       "hidden": false,
       "label": "Master IP",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },   
+    {
+      "name": "ibm_cloud_private_master_vip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Virtual IP.",
+      "hidden": false,
+      "label": "Cluster Virtual IP",
       "group_name": "content_template_output",
       "secured": false,
       "system": false,
@@ -1655,6 +1667,17 @@
       "hidden": false,
       "immutable": false,
       "group_name": "content_template_output"
+    },
+    {
+      "name": "ibm_cloud_private_proxy_hostname",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Proxy Node Hostname.",
+      "hidden": false,
+      "label": "IBM Cloud Private Proxy Node Hostname",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
     }
   ]
 }
