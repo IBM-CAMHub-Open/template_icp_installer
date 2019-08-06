@@ -454,13 +454,14 @@
     {
       "name": "icp_admin_password",
       "description": "IBM Cloud Private Admin User Password",
-      "default": "admin",
       "type": "password",
       "required": true,
       "secured": true,
       "label": "IBM Cloud Private Admin Password",
       "hidden": false,
       "immutable": false,
+      "regex": "^([a-zA-Z0-9\\-]{32,})$",
+      "regexdesc": "Allow alphanumeric characters or - symbol. Must have at least 32 characters",
       "group_name": "icpmultinode"
     },
     {
@@ -504,9 +505,13 @@
       "name": "icp_version",
       "description": "IBM Cloud Private Version Number",
       "options": [{
-        "value": "3.1.1",
-        "label": "3.1.1",
+        "value": "3.1.2",
+        "label": "3.1.2",
         "default": "true"
+        },
+        {
+          "value": "3.1.1",
+          "label": "3.1.1"
         },
         {
           "value": "3.1.0",
@@ -525,7 +530,7 @@
       "required": true,
       "secured": false,
       "label": "IBM Cloud Private Version",
-      "hidden": false,
+      "hidden": true,
       "immutable": false,
       "group_name": "icpdownload"
     },
@@ -1234,7 +1239,7 @@
       "secured": false,
       "label": "NFS Server Node Server Folder",
       "hidden": false,
-      "immutable": false,
+      "immutable": true,
       "group_name": "nfs_servervirtualmachine"
     }
   ],
@@ -1265,6 +1270,18 @@
       "immutable": false
     }, 
     {
+      "name": "ibm_cloud_private_master_vip",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Virtual IP.",
+      "hidden": false,
+      "label": "Cluster Virtual IP",
+      "group_name": "content_template_output",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
+    },     
+    {
       "name": "ibm_cloud_private_admin_user",
       "description": "IBM Cloud Private Admin Username",
       "type": "string",
@@ -1285,8 +1302,17 @@
       "hidden": false,
       "immutable": false,
       "group_name": "content_template_output"
+    },
+    {
+      "name": "ibm_cloud_private_proxy_hostname",
+      "type": "string",
+      "description": "IBM Cloud Private Cluster Proxy Node Hostname.",
+      "hidden": false,
+      "label": "IBM Cloud Private Proxy Node Hostname",
+      "secured": false,
+      "system": false,
+      "required": true,
+      "immutable": false
     }
-
-
   ]
 }
