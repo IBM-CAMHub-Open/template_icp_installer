@@ -9,7 +9,7 @@
     {
       "name": "com.ibm.cloud.cloudconnections.ICP",
       "dataobject": {
-        "name": "${template_input_params.icp_cluster_name}",
+        "name": "${template_output_params.cloud_connection_name}",
         "attributes": [
           {
             "name": "username",
@@ -25,7 +25,27 @@
           }
         ]
       }
-    }
+    }, {
+		"name": "private_docker_registry",
+		"dataobject": {
+			"name": "${template_output_params.registry_config_do_name}",
+			"attributes": [
+				{
+					"name": "server_name",
+					"value": "${template_output_params.ibm_cloud_private_custer_ca_domain}"
+				}, {
+					"name": "server_ip",
+					"value": "${template_output_params.ibm_cloud_private_master_ip}"
+				}, {
+					"name": "server_port",
+					"value": "8500"
+				}, {
+					"name": "CA_certificate",
+					"value": "${template_output_params.registry_ca_cert}"
+				}
+			]
+		}
+	}
   ],
   "input_groups": [
     {
@@ -480,7 +500,6 @@
     {
       "name": "icp_private_ssh_key",
       "description": "IBM Cloud Private - Private SSH key for access between boxes (base64 encoded)",
-      "default": "",
       "type": "string",
       "required": false,
       "secured": true,
@@ -492,7 +511,6 @@
     {
       "name": "icp_public_ssh_key",
       "description": "IBM Cloud Private - Public SSH key for access between boxes",
-      "default": "",
       "type": "string",
       "required": false,
       "secured": false,
@@ -504,28 +522,7 @@
     {
       "name": "icp_version",
       "description": "IBM Cloud Private Version Number",
-      "options": [{
-        "value": "3.1.2",
-        "label": "3.1.2",
-        "default": "true"
-        },
-        {
-          "value": "3.1.1",
-          "label": "3.1.1"
-        },
-        {
-          "value": "3.1.0",
-          "label": "3.1.0"
-        },
-        {
-          "value": "2.1.0.3",
-          "label": "2.1.0.3"
-        },
-        {
-          "value": "2.1.0.2",
-          "label": "2.1.0.2"
-        }
-      ],
+      "default": "3.2.0",
       "type": "string",
       "required": true,
       "secured": false,
@@ -1313,6 +1310,44 @@
       "system": false,
       "required": true,
       "immutable": false
-    }
+    }, {
+		"name": "ibm_cloud_private_custer_ca_domain",
+		"type": "string",
+		"description": "IBM Cloud Private Cluster CA Domain. This value is used as registry server name.",
+		"hidden": false,
+		"label": "IBM Cloud Private Cluster CA Domain",
+		"secured": false,
+		"system": false,
+		"required": true,
+		"immutable": false
+	}, {
+		"name": "registry_ca_cert",
+		"type": "string",
+		"description": "Base64 encoded private docker registry CA certificate. If CA certificate is emmpty then this value will be base64 encoded value of string NIL",
+		"hidden": false,
+		"label": "Base64 encoded private docker registry CA certificate",
+		"secured": false
+	}, {
+		"name": "registry_config_do_name",
+		"type": "string",
+		"description": "Name of docker private registry data object that contains docker registry details for this deployment.",
+		"hidden": false,
+		"label": "Docker Private Registry Data Object Name",
+		"secured": false
+	}, {
+		"name": "icp_install_dir",
+		"type": "string",
+		"description": "ICP Install Directory",
+		"hidden": false,
+		"label": "ICP Install Directory",
+		"secured": false
+	}, {
+		"name": "cloud_connection_name",
+		"type": "string",
+		"description": "ICP Cloud Connection Name",
+		"hidden": false,
+		"label": "ICP Cloud Connection Name",
+		"secured": false
+	}
   ]
 }

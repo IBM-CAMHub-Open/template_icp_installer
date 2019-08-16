@@ -24,23 +24,6 @@
 				]
 			}
 		}, {
-			"name": "kubeconfig",
-			"dataobject": {
-				"name": "${template_output_params.kube_config_do_name}",
-				"attributes": [
-					{
-						"name": "cluster_name",
-						"value": "${template_input_params.icp_cluster_name}"
-					}, {
-						"name": "cluster_config",
-						"value": "${template_output_params.cluster_config}"
-					}, {
-						"name": "cluster_certificate_authority",
-						"value": "${template_output_params.cluster_ca_certificate}"
-					}
-				]
-			}
-		}, {
 			"name": "private_docker_registry",
 			"dataobject": {
 				"name": "${template_output_params.registry_config_do_name}",
@@ -503,7 +486,6 @@
 		}, {
 			"name": "icp_private_ssh_key",
 			"description": "IBM Cloud Private - Private SSH key for access between boxes (base64 encoded)",
-			"default": "",
 			"type": "string",
 			"required": false,
 			"secured": true,
@@ -514,7 +496,6 @@
 		}, {
 			"name": "icp_public_ssh_key",
 			"description": "IBM Cloud Private - Public SSH key for access between boxes",
-			"default": "",
 			"type": "string",
 			"required": false,
 			"secured": false,
@@ -1556,20 +1537,6 @@
 			"required": true,
 			"immutable": false
 		}, {
-			"name": "cluster_config",
-			"type": "string",
-			"description": "Base64 encoded kubernetes configuration for this deployment.",
-			"hidden": false,
-			"label": "Base64 encoded kubernetes configuration",
-			"secured": false
-		}, {
-			"name": "cluster_ca_certificate",
-			"type": "string",
-			"description": "Base64 encoded kubernetes CA certificate. If CA certificate is emmpty then this value will be base64 encoded value of string NIL",
-			"hidden": false,
-			"label": "Base64 encoded kubernetes CA certificate",
-			"secured": false
-		}, {
 			"name": "registry_ca_cert",
 			"type": "string",
 			"description": "Base64 encoded private docker registry CA certificate. If CA certificate is emmpty then this value will be base64 encoded value of string NIL",
@@ -1582,13 +1549,6 @@
 			"description": "Name of docker private registry data object that contains docker registry details for this deployment.",
 			"hidden": false,
 			"label": "Docker Private Registry Data Object Name",
-			"secured": false
-		}, {
-			"name": "kube_config_do_name",
-			"type": "string",
-			"description": "Name of kubeconfig data object that contains kubernetes configuration for this deployment.",
-			"hidden": false,
-			"label": "Kubernetes Configuration Data Object Name (kubeconfig)",
 			"secured": false
 		}, {
 			"name": "icp_install_dir",

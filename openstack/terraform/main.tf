@@ -578,3 +578,41 @@ module "icp_config_yaml" {
   bastion_password    = "${var.bastion_password}" 
   dependsOn              = "${module.icp_download_load.dependsOn}+${module.icp_prereqs.dependsOn}+${module.push_hostfile.dependsOn}+${module.glusterFS.dependsOn}"
 }
+
+module "icp_config_output" {
+  dependsOn             = "[${module.icp_config_yaml.dependsOn}]"
+  source                = "git::https://github.com/IBM-CAMHub-Open/template_icp_modules.git?ref=2.3//config_output"
+  vm_os_private_key     = "${length(var.icp_private_ssh_key) == 0 ? "${base64encode(tls_private_key.generate.private_key_pem)}" : "${var.icp_private_ssh_key}"}"
+  vm_os_password        = "${var.vm_os_password}"
+  vm_os_user            = "${var.vm_os_user}"
+  master_node_ip        = "${element(values(var.master_hostname_ip),0)}"
+  cluster_name			= "${var.icp_cluster_name}"
+  api_server			= "${element(values(var.master_hostname_ip),0)}"
+  api_port				= "8001"
+  reg_server			= "${var.icp_cluster_name}.${var.vm_domain}"
+  reg_port				= "8500"
+  icp_admin_user        = "${var.icp_admin_user}"  
+  #######
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_host_key    = "${var.bastion_host_key}"
+  bastion_password    = "${var.bastion_password}"
+  #######      
+}
+
+resource "camc_scriptpackage" "get_home_dir" {
+  depends_on = ["module.icp_config_yaml"]
+  program = ["echo $HOME"]
+  on_create = true
+  remote_host = "${element(values(var.boot_hostname_ip),0)}"
+  remote_user = "${var.vm_os_user}"
+  remote_password = "${var.vm_os_password}"
+  remote_key = "${length(var.icp_private_ssh_key) == 0 ? "${base64encode(tls_private_key.generate.private_key_pem)}" : "${var.icp_private_ssh_key}"}"
+  bastion_host        = "${var.bastion_host}"
+  bastion_user        = "${var.bastion_user}"
+  bastion_private_key = "${var.bastion_private_key}"
+  bastion_port        = "${var.bastion_port}"
+  bastion_password    = "${var.bastion_password}"
+}
