@@ -70,7 +70,7 @@ module "deployVM_boot" {
 }
 
 module "add_ilmt_file_boot" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -121,7 +121,7 @@ module "deployVM_master" {
 }
 
 module "add_ilmt_file_master" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -208,7 +208,7 @@ module "deployVM_proxy" {
 }
 
 module "add_ilmt_file_proxy" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -260,7 +260,7 @@ module "deployVM_worker" {
 }
 
 module "add_ilmt_file_worker" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   private_key          = "${length(var.icp_private_ssh_key) == 0 ? "${tls_private_key.generate.private_key_pem}" : "${base64decode(var.icp_private_ssh_key)}"}"
   vm_os_password       = "${var.vm_os_password}"
@@ -400,7 +400,7 @@ module "push_hostfile" {
 }
 
 module "add_ilmt_file_VA_Server" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   enable_vm               = "${var.enable_vm_va}"
 
@@ -420,7 +420,7 @@ module "add_ilmt_file_VA_Server" {
 }
 
 module "add_ilmt_file_NFS_Server" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   enable_vm           = "${var.enable_nfs}"
   
@@ -440,7 +440,7 @@ module "add_ilmt_file_NFS_Server" {
 }
 
 module "add_ilmt_file_manage" {
-  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.0"
+  source               = "git::https://github.com/IBM-CAMHub-Open/terraform_module_ilmt.git?ref=3.2.1"
 
   enable_vm               = "${var.enable_vm_management}"
 
