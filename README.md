@@ -30,6 +30,8 @@ For more infomation on IBM Cloud Private Nodes, please reference the Knowledge C
 | 2.1.0.3| 2.1|
 | 3.1.0  | 2.2|
 | 3.1.1  | 2.3|
+| 3.1.2  | 2.3|
+| 3.2.1  | 3.2.1|
 
 <https://github.com/IBM-CAMHub-Open/template_icp_installer>
 
@@ -135,7 +137,7 @@ The following tables list the template variables.
 | icp_binary_url |  IBM Cloud Private Download Location (http/https/ftp/file)| string | |
 | icp_private_ssh_key | IBM Cloud Private - Private SSH Key | string | `` |
 | icp_public_ssh_key | IBM Cloud Private - Public SSH Key | string | `` |
-| icp_version | IBM Cloud Private Version | string | `3.1.0` |
+| icp_version | IBM Cloud Private Version | string | `3.2.1` |
 | kub_version | Kubernetes Version| string | `1.11.0` |
 
 ### Management Node Input Settings
