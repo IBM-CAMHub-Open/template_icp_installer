@@ -1,10 +1,11 @@
 {
-	  "input_datatypes": [
-	    {
-	      "name": "bastionhost",
-	      "label": "Bastion Data"
-	    }
-	  ], 
+  "terraform_engine": "~> 0.11.0",
+  "input_datatypes": [
+	{
+		"name": "bastionhost",
+		"label": "Bastion Data"
+	}
+  ], 
   "output_datatypes": [
     {
       "name": "com.ibm.cloud.cloudconnections.ICP",
